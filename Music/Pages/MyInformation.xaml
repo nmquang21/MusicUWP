@@ -1,0 +1,25 @@
+﻿<Page
+    x:Class="Music.Pages.MyInformation"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Music.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <ScrollViewer HorizontalAlignment="Center" Width="500">
+            <StackPanel>
+                <PersonPicture x:Name="PersonPicture" />
+                <TextBlock x:Name="Name"></TextBlock>
+                <TextBlock x:Name="Gender"></TextBlock>
+                <TextBlock x:Name="Birthday"></TextBlock>
+                <TextBlock x:Name="email"></TextBlock>
+                <TextBlock x:Name="Phone"></TextBlock>
+                <TextBlock x:Name="Address"></TextBlock>
+                <TextBlock x:Name="introduction"></TextBlock>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
