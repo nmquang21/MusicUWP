@@ -11,8 +11,10 @@ MainPage.xbf
 Music.xr.xml
 Pages\FileHandle.xbf
 Pages\Home.xbf
+Pages\ListSong.xbf
 Pages\Login.xbf
 Pages\MyInformation.xbf
 Pages\Naview.xbf
 Pages\Register.xbf
+Pages\Upload.xbf
 Properties\Default.rd.xml

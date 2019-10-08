@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -23,10 +26,17 @@ namespace Music.Pages
     /// </summary>
     public sealed partial class Home : Page
     {
+        
         public Home()
         {
+            var Url = "http://localhost:8080/Quang_T1807E/public/listCT";
             this.InitializeComponent();
-            this.Image.Source = new BitmapImage(new Uri("https://cdn4.vectorstock.com/i/1000x1000/32/18/user-sign-icon-person-symbol-human-avatar-vector-12693218.jpg"));
+            //this.Image.Source = new BitmapImage(new Uri("https://cdn4.vectorstock.com/i/1000x1000/32/18/user-sign-icon-person-symbol-human-avatar-vector-12693218.jpg"));
+            //var httpClient = new HttpClient();
+            //Task<HttpResponseMessage> httpRequestMessage = httpClient.GetAsync(Url);
+            //String responseContent = httpRequestMessage.Result.Content.ReadAsStringAsync().Result;
+            //var currentUploadUrl = responseContent.ToString();
+            //Debug.WriteLine(currentUploadUrl);
         }
     }
 }

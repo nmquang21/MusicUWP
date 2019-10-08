@@ -30,13 +30,13 @@
     <AppXManifest Include="E:\APTECH\Sem3\Music\Music\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2019-09-27T13:59:10.167</Modified>
+      <Modified>2019-10-07T17:37:15.941</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="E:\APTECH\Sem3\Music\Music\bin\x86\Debug\Music.exe">
       <PackagePath>entrypoint\Music.exe</PackagePath>
-      <Modified>2019-09-27T13:59:09.769</Modified>
+      <Modified>2019-10-07T17:37:15.218</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\nmqua\.nuget\packages\newtonsoft.json\12.0.2\lib\netstandard2.0\Newtonsoft.Json.dll">
       <PackagePath>Newtonsoft.Json.dll</PackagePath>
@@ -90,39 +90,47 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\APTECH\Sem3\Music\Music\bin\x86\Debug\Music.xr.xml">
       <PackagePath>Music.xr.xml</PackagePath>
-      <Modified>2019-09-27T13:42:16.694</Modified>
+      <Modified>2019-10-07T16:38:20.572</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\APTECH\Sem3\Music\Music\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2019-09-27T13:59:09.563</Modified>
+      <Modified>2019-10-07T17:37:14.783</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\APTECH\Sem3\Music\Music\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2019-09-27T13:59:09.563</Modified>
+      <Modified>2019-10-07T17:37:14.783</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\APTECH\Sem3\Music\Music\bin\x86\Debug\Pages\FileHandle.xbf">
       <PackagePath>Pages\FileHandle.xbf</PackagePath>
-      <Modified>2019-09-27T13:59:09.563</Modified>
+      <Modified>2019-10-07T17:37:14.784</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\APTECH\Sem3\Music\Music\bin\x86\Debug\Pages\Home.xbf">
       <PackagePath>Pages\Home.xbf</PackagePath>
-      <Modified>2019-09-27T13:59:09.563</Modified>
+      <Modified>2019-10-07T17:37:14.784</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\APTECH\Sem3\Music\Music\bin\x86\Debug\Pages\ListSong.xbf">
+      <PackagePath>Pages\ListSong.xbf</PackagePath>
+      <Modified>2019-10-07T17:37:14.785</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\APTECH\Sem3\Music\Music\bin\x86\Debug\Pages\Login.xbf">
       <PackagePath>Pages\Login.xbf</PackagePath>
-      <Modified>2019-09-27T13:59:09.563</Modified>
+      <Modified>2019-10-07T17:37:14.785</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\APTECH\Sem3\Music\Music\bin\x86\Debug\Pages\MyInformation.xbf">
       <PackagePath>Pages\MyInformation.xbf</PackagePath>
-      <Modified>2019-09-27T13:59:09.564</Modified>
+      <Modified>2019-10-07T17:37:14.785</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\APTECH\Sem3\Music\Music\bin\x86\Debug\Pages\Naview.xbf">
       <PackagePath>Pages\Naview.xbf</PackagePath>
-      <Modified>2019-09-27T13:59:09.564</Modified>
+      <Modified>2019-10-07T17:37:14.786</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\APTECH\Sem3\Music\Music\bin\x86\Debug\Pages\Register.xbf">
       <PackagePath>Pages\Register.xbf</PackagePath>
-      <Modified>2019-09-27T13:59:09.564</Modified>
+      <Modified>2019-10-07T17:37:14.786</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\APTECH\Sem3\Music\Music\bin\x86\Debug\Pages\Upload.xbf">
+      <PackagePath>Pages\Upload.xbf</PackagePath>
+      <Modified>2019-10-07T17:37:14.786</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.18362.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -130,11 +138,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\APTECH\Sem3\Music\Music\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2019-09-27T11:53:22.110</Modified>
+      <Modified>2019-10-07T16:22:44.916</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\APTECH\Sem3\Music\Music\bin\x86\Debug\Core\Music.exe">
       <PackagePath>Music.exe</PackagePath>
-      <Modified>2019-09-27T13:59:10.163</Modified>
+      <Modified>2019-10-07T17:37:15.933</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

@@ -21,7 +21,7 @@
                 <NavigationViewItemHeader x:Name="MainPagesHeader"
                                            Content="Main pages"/>
 
-                <NavigationViewItem Tag="mymusic" Icon="Audio" Content="My Music"/>
+                <NavigationViewItem Tag="listsongs" Icon="Audio" Content="List Songs"/>
                 <NavigationViewItem Tag="upload" Content="Upload Music">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEA5C;"/>

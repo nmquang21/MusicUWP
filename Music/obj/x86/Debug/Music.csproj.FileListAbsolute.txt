@@ -74,3 +74,13 @@ E:\APTECH\Sem3\Music\Music\obj\x86\Debug\Pages\FileHandle.g.i.cs
 E:\APTECH\Sem3\Music\Music\obj\x86\Debug\Pages\FileHandle.g.cs
 E:\APTECH\Sem3\Music\Music\obj\x86\Debug\Pages\FileHandle.xaml
 E:\APTECH\Sem3\Music\Music\obj\x86\Debug\Pages\FileHandle.xbf
+E:\APTECH\Sem3\Music\Music\bin\x86\Debug\Pages\ListSong.xbf
+E:\APTECH\Sem3\Music\Music\obj\x86\Debug\Pages\ListSong.g.i.cs
+E:\APTECH\Sem3\Music\Music\obj\x86\Debug\Pages\ListSong.g.cs
+E:\APTECH\Sem3\Music\Music\obj\x86\Debug\Pages\ListSong.xaml
+E:\APTECH\Sem3\Music\Music\obj\x86\Debug\Pages\ListSong.xbf
+E:\APTECH\Sem3\Music\Music\bin\x86\Debug\Pages\Upload.xbf
+E:\APTECH\Sem3\Music\Music\obj\x86\Debug\Pages\Upload.g.i.cs
+E:\APTECH\Sem3\Music\Music\obj\x86\Debug\Pages\Upload.g.cs
+E:\APTECH\Sem3\Music\Music\obj\x86\Debug\Pages\Upload.xaml
+E:\APTECH\Sem3\Music\Music\obj\x86\Debug\Pages\Upload.xbf

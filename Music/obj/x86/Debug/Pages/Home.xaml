@@ -10,6 +10,7 @@
 
     <Grid>
         <!--<WebView Source="https://google.com" />-->
+        <ProgressRing IsActive="True" />
         <Image x:ConnectionId='2' x:Name="Image" Height="100" />
     </Grid>
 </Page>

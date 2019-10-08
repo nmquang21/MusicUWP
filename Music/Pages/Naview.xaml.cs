@@ -42,8 +42,8 @@ namespace Music.Pages
         {
             ("home", typeof(Home)),
             ("apps", typeof(MainPage)),
-            ("games", typeof(MainPage)),
-            ("music", typeof(MainPage)),
+            ("upload", typeof(Upload)),
+            ("listsongs", typeof(ListSong)),
             ("register", typeof(Register)),
             ("login", typeof(Login)),
             ("myInformation", typeof(MyInformation)),
