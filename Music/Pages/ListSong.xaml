@@ -10,9 +10,9 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <ListView ItemsSource="{x:Bind ListSongs}" x:Name="MyListSong" >
+        <ListView ItemsSource="{x:Bind ListSongs}" x:Name="NewListSong" IsItemClickEnabled="True" ItemClick="NewSong_OnItemClick" >
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="entity:Song">
+                <DataTemplate x:DataType="entity:Song" >
                     <StackPanel Margin="0,10,0,10" Orientation="Horizontal"  Tag="{Binding}">
                         <Ellipse Width="77" Height="77">
                             <Ellipse.Fill>
@@ -20,13 +20,16 @@
                             </Ellipse.Fill>
                         </Ellipse>
                         <StackPanel Margin="10,10,0,0">
-                            <TextBlock Text="{x:Bind name}" Style="{ThemeResource BaseTextBlockStyle}"/>
-                            <TextBlock Text="{x:Bind singer}" Style="{ThemeResource BaseTextBlockStyle}"/>
+                            <TextBlock Text="{x:Bind name }" x:Name="name"  Style="{ThemeResource BaseTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseHighBrush}"/>
+                            <TextBlock Text="{x:Bind singer}" Style="{ThemeResource BodyTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                         </StackPanel>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
 
         </ListView>
+        <StackPanel HorizontalAlignment="Center" x:Name="login">
+            <Button Content="Login" Style="{StaticResource AccentButtonStyle}" Click="ButtonLogin_OnClick" Margin="0 20 20 20 " Width="80"/>
+        </StackPanel>
     </Grid>
 </Page>

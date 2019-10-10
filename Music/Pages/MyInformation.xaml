@@ -9,9 +9,9 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <ScrollViewer HorizontalAlignment="Center" Width="500">
-            <StackPanel>
-                <PersonPicture x:Name="PersonPicture" />
+        <ScrollViewer HorizontalAlignment="Center">
+                <StackPanel x:Name="info" Visibility="Visible">
+                <PersonPicture x:Name="PersonPicture" Margin="0 50 0 30"/>
                 <TextBlock x:Name="Name"></TextBlock>
                 <TextBlock x:Name="Gender"></TextBlock>
                 <TextBlock x:Name="Birthday"></TextBlock>
@@ -19,7 +19,16 @@
                 <TextBlock x:Name="Phone"></TextBlock>
                 <TextBlock x:Name="Address"></TextBlock>
                 <TextBlock x:Name="introduction"></TextBlock>
+                <Button Style="{StaticResource AccentButtonStyle}" Content="Logout" HorizontalAlignment="Center" Margin="50" Click="ButtonLogout_OnClick"/>
             </StackPanel>
         </ScrollViewer>
+        <StackPanel x:Name="loginRequied" Margin="0 50">
+            <PersonPicture/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="Login" Style="{StaticResource AccentButtonStyle}" Click="ButtonLogin_OnClick" Margin="0 20 20 20 " Width="80"/>
+                <Button Content="Register" Style="{StaticResource AccentButtonStyle}" Click="ButtonRegister_OnClick" Width="80"/>
+            </StackPanel>
+        </StackPanel>
+        
     </Grid>
 </Page>

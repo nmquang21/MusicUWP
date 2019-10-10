@@ -8,58 +8,96 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions >
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         <NavigationView x:ConnectionId='2' x:Name="NavView"
                                                     
                                                               
-                                                                  >
+                                                                  
+                             Grid.Row="0" Grid.Column="0">
 
             <NavigationView.MenuItems>
                 <NavigationViewItem Tag="home" Icon="Home" Content="Home"/>
                 <NavigationViewItemSeparator/>
-                <NavigationViewItemHeader x:ConnectionId='3' x:Name="MainPagesHeader"
+                <NavigationViewItemHeader x:ConnectionId='8' x:Name="MainPagesHeader"
                                            Content="Main pages"/>
 
-                <NavigationViewItem Tag="listsongs" Icon="Audio" Content="List Songs"/>
-                <NavigationViewItem Tag="upload" Content="Upload Music">
+                <NavigationViewItem Tag="mysong" Icon="Audio" Content="My Songs"/>
+                <NavigationViewItem Tag="listsong" Content="New Songs">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE762;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem Tag="upload" Content="Upload Song">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEA5C;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItemSeparator/>
-                    <NavigationViewItem Tag="register" Icon="AddFriend" Content="Register"/>
-                    <NavigationViewItem Tag="login" Icon="Contact" Content="Login"/>
+                    <NavigationViewItem x:ConnectionId='9' x:Name="Register" Tag="register" Icon="AddFriend" Content="Register" Visibility="Visible"/>
+                    <NavigationViewItem x:ConnectionId='10' x:Name="Login" Tag="login" Icon="Contact" Content="Login" Visibility="Visible"/>
                 <NavigationViewItem Tag="myInformation" Content="My Information">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEA4A;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem Tag="filehandle" Content="File Handle">
-                    <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEA4A;"/>
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
+              
 
             </NavigationView.MenuItems>
 
             <NavigationView.AutoSuggestBox>
                 <!-- See AutoSuggestBox documentation for
                  more info about how to implement search. -->
-                <AutoSuggestBox x:ConnectionId='4' x:Name="NavViewSearchBox" QueryIcon="Find"/>
+                <AutoSuggestBox x:ConnectionId='11' x:Name="NavViewSearchBox" QueryIcon="Find"/>
             </NavigationView.AutoSuggestBox>
-
+            
             <ScrollViewer>
-                <Frame x:ConnectionId='5' x:Name="ContentFrame" Padding="12,0,12,24" IsTabStop="True"
+                <Frame x:ConnectionId='12' x:Name="ContentFrame" Padding="12,0,12,24" IsTabStop="True"
                                                                    />
             </ScrollViewer>
+            
         </NavigationView>
+        <!--<MediaPlayerElement x:Name="mediaPlayer"
+                            AutoPlay="False"
+                            AreTransportControlsEnabled="True"
+                            Grid.Row="1" Grid.Column="0">
+            <MediaPlayerElement.TransportControls>
+                <MediaTransportControls Background="Chartreuse"
+                                        IsStopButtonVisible="True"
+                                        IsStopEnabled="True"
+                                        IsTextScaleFactorEnabled="True" 
+                                        IsPlaybackRateEnabled="True" 
+                                        IsPlaybackRateButtonVisible="True" 
+                                        IsFastForwardButtonVisible="True" 
+                                        IsFastForwardEnabled="True" 
+                                        IsFastRewindButtonVisible="True"
+                                        IsFastRewindEnabled="True"
+                                        IsNextTrackButtonVisible="True"
+                                        IsPreviousTrackButtonVisible="True"/>
+            </MediaPlayerElement.TransportControls>
+        </MediaPlayerElement>-->
+        <MediaElement x:ConnectionId='3' x:Name="mediaPlayer" />
+        <CommandBar Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom">
+            <AppBarSeparator/>
+            <AppBarButton x:ConnectionId='4' x:Name="PreviousButton" Icon="Previous" Label="Previous"                                />
+            <AppBarButton x:ConnectionId='5' x:Name="StatusButton" Icon="Pause" Label="Play"                             />
+            <AppBarButton x:ConnectionId='6' x:Name="NextButton" Icon="Next" Label="Next"                           />
+            <CommandBar.Content>
+                <TextBlock x:ConnectionId='7' x:Name="ControlLabel" Text="Please choose a song." Margin="12,14"/>
+            </CommandBar.Content>
+        </CommandBar>
 
         <VisualStateManager.VisualStateGroups>
                 <VisualStateGroup>
                     <VisualState>
                         <VisualState.StateTriggers>
-                            <AdaptiveTrigger x:ConnectionId='6'
+                            <AdaptiveTrigger x:ConnectionId='13'
                                                                                        />
                         </VisualState.StateTriggers>
                         <VisualState.Setters>
@@ -73,6 +111,7 @@
                     </VisualState>
                 </VisualStateGroup>
             </VisualStateManager.VisualStateGroups>
+
         </Grid>
 </Page>
 

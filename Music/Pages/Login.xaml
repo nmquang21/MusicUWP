@@ -13,8 +13,11 @@
             <StackPanel>
                 <TextBlock>Email</TextBlock>
                 <TextBox x:Name="Email" Margin="0 0 0 20"></TextBox>
+                <TextBlock x:Name="validate_email" Margin="0 -20 0 20" Foreground="Red" Visibility="Collapsed"/>
                 <TextBlock>Password</TextBlock>
                 <PasswordBox x:Name="Password" Margin="0 0 0 20"></PasswordBox>
+                <TextBlock x:Name="validate_password"  Margin="0 -20 0 20" Foreground="Red" Visibility="Collapsed"/>
+                <TextBlock x:Name="login_fail" HorizontalAlignment="Center" Margin="0 0 0 20" Foreground="Red" Visibility="Collapsed"/>
                 <Grid HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -23,7 +26,7 @@
                         <ColumnDefinition MaxWidth="200"/>
                         <ColumnDefinition MaxWidth="200"/>
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Row="0" Grid.Column="0" Margin="0 0 20 0" Click="ButtonLogin_OnClick">Login</Button>
+                    <Button Style="{StaticResource ButtonRevealStyle}" Grid.Row="0" Grid.Column="0" Margin="0 0 20 0" Click="ButtonLogin_OnClick">Login</Button>
                     <Button Grid.Row="0" Grid.Column="1" Click="ButtonReset_OnClick">Reset</Button>
                 </Grid>
             </StackPanel>

@@ -91,6 +91,9 @@
     <AppxPackagedFile Include="E:\APTECH\Sem3\Music\Music\bin\x86\Debug\Pages\MyInformation.xbf">
       <PackagePath>Pages\MyInformation.xbf</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\APTECH\Sem3\Music\Music\bin\x86\Debug\Pages\MySong.xbf">
+      <PackagePath>Pages\MySong.xbf</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="E:\APTECH\Sem3\Music\Music\bin\x86\Debug\Pages\Naview.xbf">
       <PackagePath>Pages\Naview.xbf</PackagePath>
     </AppxPackagedFile>

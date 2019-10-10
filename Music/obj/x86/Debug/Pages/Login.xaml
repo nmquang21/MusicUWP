@@ -13,8 +13,11 @@
             <StackPanel>
                 <TextBlock>Email</TextBlock>
                 <TextBox x:ConnectionId='2' x:Name="Email" Margin="0 0 0 20"></TextBox>
+                <TextBlock x:ConnectionId='3' x:Name="validate_email" Margin="0 -20 0 20" Foreground="Red" Visibility="Collapsed"/>
                 <TextBlock>Password</TextBlock>
-                <PasswordBox x:ConnectionId='3' x:Name="Password" Margin="0 0 0 20"></PasswordBox>
+                <PasswordBox x:ConnectionId='4' x:Name="Password" Margin="0 0 0 20"></PasswordBox>
+                <TextBlock x:ConnectionId='5' x:Name="validate_password"  Margin="0 -20 0 20" Foreground="Red" Visibility="Collapsed"/>
+                <TextBlock x:ConnectionId='6' x:Name="login_fail" HorizontalAlignment="Center" Margin="0 0 0 20" Foreground="Red" Visibility="Collapsed"/>
                 <Grid HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -23,8 +26,8 @@
                         <ColumnDefinition MaxWidth="200"/>
                         <ColumnDefinition MaxWidth="200"/>
                     </Grid.ColumnDefinitions>
-                    <Button x:ConnectionId='4' Grid.Row="0" Grid.Column="0" Margin="0 0 20 0"                            >Login</Button>
-                    <Button x:ConnectionId='5' Grid.Row="0" Grid.Column="1"                            >Reset</Button>
+                    <Button x:ConnectionId='7' Style="{StaticResource ButtonRevealStyle}" Grid.Row="0" Grid.Column="0" Margin="0 0 20 0"                            >Login</Button>
+                    <Button x:ConnectionId='8' Grid.Row="0" Grid.Column="1"                            >Reset</Button>
                 </Grid>
             </StackPanel>
         </ScrollViewer>

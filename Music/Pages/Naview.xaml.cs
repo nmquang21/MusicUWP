@@ -6,8 +6,10 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Media.Core;
 using Windows.System;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Automation.Peers;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
@@ -15,6 +17,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
+using Music.Entity;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -25,9 +28,37 @@ namespace Music.Pages
     /// </summary>
     public sealed partial class Naview : Page
     {
+        public static List<Song> MySongs;
+        public static List<Song> NewSongs;
+        public static MediaElement MyMediaPlayer;
+        public static Frame MainFrame;
+        public static bool _isPlay = true;
+        public static int _currentIndex = -1;
+        public static int listPlaying = 0;  //0: My Songs
+                                            //1: New Songs
+        public static TextBlock NamePlaying;
+        public static AppBarButton btnStatus;
         public Naview()
         {
             this.InitializeComponent();
+            this.mediaPlayer.Volume = 1;
+            MyMediaPlayer = this.mediaPlayer;
+            MainFrame = this.ContentFrame;
+            NamePlaying = this.ControlLabel;
+            btnStatus = this.StatusButton;
+            
+            //MyMediaPlayer.Source = MediaSource.CreateFromUri(new Uri("https://c1-ex-swe.nixcdn.com/NhacCuaTui982/BanDuyenRemix-DinhDungHtrolPhamThanh-5962025.mp3"));
+            //https://data25.chiasenhac.com/downloads/2036/3/2035613-5a4faa89/128/Co%20Tham%20Khong%20Ve%20-%20Phat%20Ho_%20Jokes%20Bii_%20T.mp3
+            //if (!GetTokenFromLocalStorage().Equals(""))
+            //{
+            //    this.Login.Visibility = Visibility.Collapsed;
+            //    this.Register.Visibility = Visibility.Collapsed;
+            //}
+            //else
+            //{
+            //    this.Login.Visibility = Visibility.Visible;
+            //    this.Register.Visibility = Visibility.Visible;
+            //}
         }
         // Add "using" for WinUI controls.
         // using muxc = Microsoft.UI.Xaml.Controls;
@@ -43,11 +74,11 @@ namespace Music.Pages
             ("home", typeof(Home)),
             ("apps", typeof(MainPage)),
             ("upload", typeof(Upload)),
-            ("listsongs", typeof(ListSong)),
+            ("listsong", typeof(ListSong)),
             ("register", typeof(Register)),
             ("login", typeof(Login)),
             ("myInformation", typeof(MyInformation)),
-            ("filehandle", typeof(FileHandle)),
+            ("mysong", typeof(MySong)),
         };
 
         private void NavView_Loaded(object sender, RoutedEventArgs e)
@@ -76,7 +107,25 @@ namespace Music.Pages
             altLeft.Invoked += BackInvoked;
             this.KeyboardAccelerators.Add(altLeft);
         }
+        //get token 
+        private string GetTokenFromLocalStorage()
+        {
+            Windows.Storage.StorageFolder storageFolder =
+                Windows.Storage.ApplicationData.Current.LocalFolder;
+            try
+            {
+                Windows.Storage.StorageFile sampleFile =
+                    storageFolder.GetFileAsync("ez.txt").GetAwaiter().GetResult();
+                return Windows.Storage.FileIO.ReadTextAsync(sampleFile).GetAwaiter().GetResult().ToString();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return "";
+            }
 
+        }
+        
         private void NavView_ItemInvoked(NavigationView sender,
             NavigationViewItemInvokedEventArgs args)
         {
@@ -90,7 +139,15 @@ namespace Music.Pages
             {
                 Debug.WriteLine("ItemContainer");
                 var navItemTag = args.InvokedItemContainer.Tag.ToString();
-                NavView_Navigate(navItemTag, args.RecommendedNavigationTransitionInfo);
+                if (navItemTag.Equals("login") && !GetTokenFromLocalStorage().Equals(""))
+                {
+                    NavView_Navigate("myInformation", args.RecommendedNavigationTransitionInfo);
+                }
+                else
+                {
+                    NavView_Navigate(navItemTag, args.RecommendedNavigationTransitionInfo);
+                }
+                
             }
         }
 
@@ -184,6 +241,108 @@ namespace Music.Pages
                 NavView.Header =
                     ((NavigationViewItem)NavView.SelectedItem)?.Content?.ToString();
             }
+        }
+
+        
+
+        private void StatusButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (_isPlay == true)
+            {
+                PauseSong();
+            }
+            else
+            {
+               PlaySong();
+            }
+        }
+
+        private void NextButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            _currentIndex++;
+            if (listPlaying == 0)
+            {
+                if (_currentIndex >= MySongs.Count || _currentIndex < 0)
+                {
+                    _currentIndex = 0;
+                }
+            }
+            else if (listPlaying == 1)
+            {
+                if (_currentIndex >= NewSongs.Count || _currentIndex < 0)
+                {
+                    _currentIndex = 0;
+                }
+            }
+            PlayOtherSong();
+
+        }
+        private void PreviousButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            _currentIndex--;
+            if (listPlaying == 0)
+            {
+                if (_currentIndex < 0)
+                {
+                    _currentIndex = MySongs.Count - 1;
+                }
+                else if (_currentIndex >= MySongs.Count)
+                {
+                    _currentIndex = 0;
+                }
+            }
+            else if (listPlaying == 1)
+            {
+                if (_currentIndex < 0)
+                {
+                    _currentIndex = NewSongs.Count - 1;
+                }
+                else if (_currentIndex >= NewSongs.Count)
+                {
+                    _currentIndex = 0;
+                }
+            }
+
+            PlayOtherSong();
+        }
+
+        public void PlayOtherSong()
+        {
+            if (listPlaying == 0)
+            {
+                MyMediaPlayer.Source = new Uri(MySongs[_currentIndex].link);
+                MySong.MyList.SelectedIndex = _currentIndex;
+                this.ControlLabel.Text = MySongs[_currentIndex].name;
+            }
+            else if (listPlaying == 1)
+            {
+                MyMediaPlayer.Source = new Uri(NewSongs[_currentIndex].link);
+                ListSong.NewList.SelectedIndex = _currentIndex;
+                this.ControlLabel.Text = NewSongs[_currentIndex].name;
+            }
+             
+        }
+        public void PlaySong()
+        {
+            MyMediaPlayer.Play();
+            _isPlay = true;
+            this.StatusButton.Icon = new SymbolIcon(Symbol.Pause);
+            if (listPlaying == 0)
+            {
+                this.ControlLabel.Text = MySongs[_currentIndex].name;
+            }
+            else
+            {
+                this.ControlLabel.Text = NewSongs[_currentIndex].name;
+            }
+        }
+
+        public void PauseSong()
+        {
+            MyMediaPlayer.Pause();
+            _isPlay = false;
+            this.StatusButton.Icon = new SymbolIcon(Symbol.Play);
+            this.ControlLabel.Text = "Paused!";
         }
     }
 }

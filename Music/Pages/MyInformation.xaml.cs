@@ -17,6 +17,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using Music.Entity;
+using Music.Service;
 using Newtonsoft.Json;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -28,44 +29,53 @@ namespace Music.Pages
     /// </summary>
     public sealed partial class MyInformation : Page
     {
-        private const string ApiUrl = "https://2-dot-backup-server-003.appspot.com/_api/v2/members/information";
+        private MemberService memberService;
 
         public MyInformation()
         {
 
             this.InitializeComponent();
-            //doc token tu file
-            Windows.Storage.StorageFolder storageFolder =
-                Windows.Storage.ApplicationData.Current.LocalFolder;
-            Windows.Storage.StorageFile sampleFile =
-                storageFolder.GetFileAsync("sample.txt").GetAwaiter().GetResult();
-            var token = Windows.Storage.FileIO.ReadTextAsync(sampleFile).GetAwaiter().GetResult().ToString();
-            Debug.WriteLine(token);
-
-            var httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Add("Authorization", "Basic " + token);
-            Task<HttpResponseMessage> httpRequestMessage = httpClient.GetAsync(ApiUrl);
-            String responseContent = httpRequestMessage.Result.Content.ReadAsStringAsync().Result;
-            Member resMember = JsonConvert.DeserializeObject<Member>(responseContent);
-
-            Debug.WriteLine(resMember);
-            
-            this.PersonPicture.ProfilePicture = new BitmapImage(new Uri(resMember.avatar));
-            this.Name.Text = "Name: " + resMember.lastName + " " + resMember.firstName;
-            if (resMember.gender == 1)
+            memberService = new MemberServiceImp();
+            var member = memberService.GetInformation();
+            if (string.IsNullOrEmpty(member.id))
             {
-                this.Gender.Text = "Gender: Male";
+                this.info.Visibility = Visibility.Collapsed;
             }
-            else
-            {
-                this.Gender.Text = "Gender: Female";
+            else{
+                Debug.WriteLine(member);
+
+                this.PersonPicture.ProfilePicture = new BitmapImage(new Uri(member.avatar));
+                this.Name.Text = "Name: " + member.lastName + " " + member.firstName;
+                if (member.gender == 1)
+                {
+                    this.Gender.Text = "Gender: Male";
+                }
+                else
+                {
+                    this.Gender.Text = "Gender: Female";
+                }
+
+                this.email.Text = "Email: " + member.email;
+                this.Address.Text = "Address: " + member.address;
+                this.Birthday.Text = "Birthday: " + member.birthday;
+                this.Phone.Text = "Phone: " + member.phone;
+                this.introduction.Text = "Introdution: " + member.introduction;
+                this.loginRequied.Visibility = Visibility.Collapsed;
             }
-            
-            this.email.Text = "Email: " + resMember.email;
-            this.Address.Text = "Address: " + resMember.address;
-            this.Birthday.Text = "Birthday: " + resMember.birthday;
-            this.Phone.Text = "Phone: " + resMember.phone;
-            this.introduction.Text = "Introdution: " + resMember.introduction;
+        }
+
+        private void ButtonLogout_OnClick(object sender, RoutedEventArgs e)
+        {
+            memberService.logout();
+            Naview.MainFrame.Navigate(typeof(MyInformation));
+        }
+        private void ButtonLogin_OnClick(object sender, RoutedEventArgs e)
+        {
+            Naview.MainFrame.Navigate(typeof(Login));
+        }
+        private void ButtonRegister_OnClick(object sender, RoutedEventArgs e)
+        {
+            Naview.MainFrame.Navigate(typeof(Register));
         }
     }
 }

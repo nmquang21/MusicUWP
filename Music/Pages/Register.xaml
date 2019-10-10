@@ -13,8 +13,10 @@
             <StackPanel>
                 <TextBlock >FirstName</TextBlock>
                 <TextBox x:Name="FirstName" Margin="0 0 0 20"></TextBox>
+                <TextBlock Foreground="Red" Margin="0 -20 0 10" x:Name="validate_firstname" Visibility="Collapsed"/>
                 <TextBlock>LastName</TextBlock>
                 <TextBox x:Name="LastName" Margin="0 0 0 20"></TextBox>
+                <TextBlock Foreground="Red" Margin="0 -20 0 10" x:Name="validate_lastname" Visibility="Collapsed"/>
                 <StackPanel>
                     <TextBlock Text="Gender:"/>
                     <RadioButton Tag="gender0" Content="Male" Checked="Gender_Checked"/>
@@ -22,20 +24,25 @@
                 </StackPanel>
                 <TextBlock>Avatar</TextBlock>
                 <TextBox x:Name="AvatarUrl" Margin="0 0 0 20"></TextBox>
+                <TextBlock Foreground="Red" Margin="0 -20 0 10" x:Name="validate_avatar" Visibility="Collapsed"/>
                 <Image x:Name="Avatar" Margin="0 0 0 20" Width="90"></Image>
                 <Button Click="TakeAPhoto">Click to Capture Image</Button>
                 <TextBlock>Phone</TextBlock>
                 <TextBox x:Name="Phone" Margin="0 0 0 20"></TextBox>
+                <TextBlock Foreground="Red" Margin="0 -20 0 10" x:Name="validate_phone" Visibility="Collapsed"/>
                 <TextBlock>Address</TextBlock>
                 <TextBox x:Name="Address" Margin="0 0 0 20"></TextBox>
+                <TextBlock Foreground="Red" Margin="0 -20 0 10" x:Name="validate_address" Visibility="Collapsed"/>
                 <TextBlock>Introduction</TextBlock>
                 <TextBox x:Name="Introduction" Margin="0 0 0 20"></TextBox>
                 <TextBlock>Birthday</TextBlock>
                 <DatePicker x:Name="Birthday" Margin="0 0 0 20"></DatePicker>
                 <TextBlock Style="{ThemeResource BaseTextBlockStyle}">Email</TextBlock>
                 <TextBox x:Name="Email" Margin="0 0 0 20"></TextBox>
+                <TextBlock Foreground="Red" Margin="0 -20 0 10" x:Name="validate_email" Visibility="Collapsed"/>
                 <TextBlock Style="{ThemeResource BaseTextBlockStyle}">Password</TextBlock>
                 <PasswordBox x:Name="Password" Margin="0 0 0 20"></PasswordBox>
+                <TextBlock Foreground="Red" Margin="0 -20 0 10" x:Name="validate_password" Visibility="Collapsed"/>
                 <Grid HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>

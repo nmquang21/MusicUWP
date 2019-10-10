@@ -9,18 +9,27 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <ScrollViewer HorizontalAlignment="Center" Width="500">
-            <StackPanel>
-                <PersonPicture x:ConnectionId='2' x:Name="PersonPicture" />
-                <TextBlock x:ConnectionId='3' x:Name="Name"></TextBlock>
-                <TextBlock x:ConnectionId='4' x:Name="Gender"></TextBlock>
-                <TextBlock x:ConnectionId='5' x:Name="Birthday"></TextBlock>
-                <TextBlock x:ConnectionId='6' x:Name="email"></TextBlock>
-                <TextBlock x:ConnectionId='7' x:Name="Phone"></TextBlock>
-                <TextBlock x:ConnectionId='8' x:Name="Address"></TextBlock>
-                <TextBlock x:ConnectionId='9' x:Name="introduction"></TextBlock>
+        <ScrollViewer HorizontalAlignment="Center">
+                <StackPanel x:ConnectionId='5' x:Name="info" Visibility="Visible">
+                <PersonPicture x:ConnectionId='6' x:Name="PersonPicture" Margin="0 50 0 30"/>
+                <TextBlock x:ConnectionId='7' x:Name="Name"></TextBlock>
+                <TextBlock x:ConnectionId='8' x:Name="Gender"></TextBlock>
+                <TextBlock x:ConnectionId='9' x:Name="Birthday"></TextBlock>
+                <TextBlock x:ConnectionId='10' x:Name="email"></TextBlock>
+                <TextBlock x:ConnectionId='11' x:Name="Phone"></TextBlock>
+                <TextBlock x:ConnectionId='12' x:Name="Address"></TextBlock>
+                <TextBlock x:ConnectionId='13' x:Name="introduction"></TextBlock>
+                <Button x:ConnectionId='14' Style="{StaticResource AccentButtonStyle}" Content="Logout" HorizontalAlignment="Center" Margin="50"                             />
             </StackPanel>
         </ScrollViewer>
+        <StackPanel x:ConnectionId='2' x:Name="loginRequied" Margin="0 50">
+            <PersonPicture/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:ConnectionId='3' Content="Login" Style="{StaticResource AccentButtonStyle}"                             Margin="0 20 20 20 " Width="80"/>
+                <Button x:ConnectionId='4' Content="Register" Style="{StaticResource AccentButtonStyle}"                                Width="80"/>
+            </StackPanel>
+        </StackPanel>
+        
     </Grid>
 </Page>
 

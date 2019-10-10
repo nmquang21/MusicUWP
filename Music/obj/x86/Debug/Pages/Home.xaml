@@ -9,9 +9,8 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <!--<WebView Source="https://google.com" />-->
-        <ProgressRing IsActive="True" />
-        <Image x:ConnectionId='2' x:Name="Image" Height="100" />
+        <WebView Source="https://zingmp3.vn/" />
+        
     </Grid>
 </Page>
 

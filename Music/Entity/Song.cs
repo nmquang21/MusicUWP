@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Music.Entity
 {
-    class Song
+    public class Song
     {
         public string name { get; set; }
         public string description { get; set; }
@@ -18,7 +18,7 @@ namespace Music.Entity
         internal Dictionary<string, string> ValidateData()
         {
             var error = new Dictionary<string,string>();
-            if (name.Equals(""))
+            if (string.IsNullOrEmpty(name))
             {
                 error.Add("name","Name is require!");
             }
@@ -27,20 +27,24 @@ namespace Music.Entity
                 error.Add("name","Name must be 3 to 50 character");
             }
             
-            if (thumbnail.Equals(""))
+            if (string.IsNullOrEmpty(thumbnail))
             {
                 error.Add("thumbnail", "Thumbnail is require!");
             }
             
-            if (link.Equals(""))
+            if (string.IsNullOrEmpty(link))
             {
                 error.Add("link", "Link is require!");
             }
-            else if (link.Length<4 || !link.Substring(link.Length-4).Equals(".mp3"))
+            //else if (link.Length<4 || !link.Substring(link.Length-4).Equals(".mp3"))
+            //{
+            //    error.Add("link", "Link is end by .mp3!");
+            //}
+
+            if (string.IsNullOrEmpty(singer))
             {
-                error.Add("link", "Link is end by .mp3!");
+                error.Add("singer", "Singer is require!");
             }
-            
             return error;
         }
     }

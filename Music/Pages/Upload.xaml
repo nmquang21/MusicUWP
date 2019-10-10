@@ -18,6 +18,7 @@
                 <TextBox x:Name="description" Margin="0 0 0 20"></TextBox>
                 <TextBlock>Singer</TextBlock>
                 <TextBox x:Name="singer" Margin="0 0 0 20"></TextBox>
+                <TextBlock x:Name="singer_validate" Margin="0 -20 0 10" Visibility="Collapsed" Foreground="Red" ></TextBlock>
                 <TextBlock>Author</TextBlock>
                 <TextBox x:Name="author" Margin="0 0 0 20"></TextBox>
                 <TextBlock>Thumbnail</TextBlock>

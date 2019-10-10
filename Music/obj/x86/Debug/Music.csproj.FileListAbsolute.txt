@@ -84,3 +84,8 @@ E:\APTECH\Sem3\Music\Music\obj\x86\Debug\Pages\Upload.g.i.cs
 E:\APTECH\Sem3\Music\Music\obj\x86\Debug\Pages\Upload.g.cs
 E:\APTECH\Sem3\Music\Music\obj\x86\Debug\Pages\Upload.xaml
 E:\APTECH\Sem3\Music\Music\obj\x86\Debug\Pages\Upload.xbf
+E:\APTECH\Sem3\Music\Music\bin\x86\Debug\Pages\MySong.xbf
+E:\APTECH\Sem3\Music\Music\obj\x86\Debug\Pages\MySong.g.i.cs
+E:\APTECH\Sem3\Music\Music\obj\x86\Debug\Pages\MySong.g.cs
+E:\APTECH\Sem3\Music\Music\obj\x86\Debug\Pages\MySong.xaml
+E:\APTECH\Sem3\Music\Music\obj\x86\Debug\Pages\MySong.xbf

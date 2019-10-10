@@ -17,6 +17,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 using Music.Entity;
+using Music.Service;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -29,40 +30,64 @@ namespace Music.Pages
     /// </summary>
     public sealed partial class Login : Page
     {
-        private string LOGIN_URL = "https://2-dot-backup-server-003.appspot.com/_api/v2/members/authentication";
-
+        private MemberService memberService;
         public Login()
         {
             this.InitializeComponent();
+            memberService = new MemberServiceImp();
         }
 
         private void ButtonLogin_OnClick(object sender, RoutedEventArgs e)
         {
-            // tạo đối tượng member login từ giá trị của form.
+            
             var memberLogin = new MemberLogin()
             {
                 email = this.Email.Text,
-                password = this.Password.Password
+                password = this.Password.Password,
             };
+            var errors = new Dictionary<string, string>();
+            errors = memberLogin.ValidateData();
+            if (errors.Count == 0)
+            {
+                if (memberService.Login(memberLogin) != null)
+                {
+                    Naview.MainFrame.Navigate(typeof(MyInformation));
+                }
+                else
+                {
+                    this.login_fail.Text = "Wrong login information!!";
+                    this.login_fail.Visibility = Visibility.Visible;
+                    this.validate_email.Visibility = Visibility.Collapsed;
+                    this.validate_password.Visibility = Visibility.Collapsed;
+                }
+            }
+            else
+            {
+                ValidateLogin(errors);
+            }
 
-            // validate
-            var dataContent = new StringContent(JsonConvert.SerializeObject(memberLogin),
-                Encoding.UTF8, "application/json");
-            HttpClient client = new HttpClient();
-            var responseContent = client.PostAsync(LOGIN_URL, dataContent).Result.Content.ReadAsStringAsync().Result;
-            JObject jsonJObject = JObject.Parse(responseContent);
-            var tk = jsonJObject["token"].ToString();
+        }
 
-            //Ghi token ra file
-            Windows.Storage.StorageFolder storageFolder =
-                Windows.Storage.ApplicationData.Current.LocalFolder;
-            Windows.Storage.StorageFile sampleFile = storageFolder.CreateFileAsync("sample.txt",
-                Windows.Storage.CreationCollisionOption.ReplaceExisting).GetAwaiter().GetResult();
-
-            Windows.Storage.FileIO.WriteTextAsync(sampleFile, tk).GetAwaiter().GetResult();
-            Debug.WriteLine(sampleFile.Path);
-
-
+        private void ValidateLogin(Dictionary<string, string> errors)
+        {
+            if (errors.ContainsKey("email"))
+            {
+                this.validate_email.Text = errors["email"];
+                this.validate_email.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                this.validate_email.Visibility = Visibility.Collapsed;
+            }
+            if (errors.ContainsKey("password"))
+            {
+                this.validate_password.Text = errors["password"];
+                this.validate_password.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                this.validate_password.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void ButtonReset_OnClick(object sender, RoutedEventArgs e)

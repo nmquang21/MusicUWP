@@ -8,6 +8,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Media.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -29,14 +30,31 @@ namespace Music.Pages
         
         public Home()
         {
-            var Url = "http://localhost:8080/Quang_T1807E/public/listCT";
             this.InitializeComponent();
-            //this.Image.Source = new BitmapImage(new Uri("https://cdn4.vectorstock.com/i/1000x1000/32/18/user-sign-icon-person-symbol-human-avatar-vector-12693218.jpg"));
-            //var httpClient = new HttpClient();
-            //Task<HttpResponseMessage> httpRequestMessage = httpClient.GetAsync(Url);
-            //String responseContent = httpRequestMessage.Result.Content.ReadAsStringAsync().Result;
-            //var currentUploadUrl = responseContent.ToString();
-            //Debug.WriteLine(currentUploadUrl);
         }
+        //private async void Button_Click(object sender, RoutedEventArgs e)
+        //{
+        //    await SetLocalMedia();
+        //}
+
+        //async private System.Threading.Tasks.Task SetLocalMedia()
+        //{
+        //    var openPicker = new Windows.Storage.Pickers.FileOpenPicker();
+
+        //    openPicker.FileTypeFilter.Add(".wmv");
+        //    openPicker.FileTypeFilter.Add(".mp4");
+        //    openPicker.FileTypeFilter.Add(".wma");
+        //    openPicker.FileTypeFilter.Add(".mp3");
+
+        //    var file = await openPicker.PickSingleFileAsync();
+
+        //    // mediaPlayer is a MediaPlayerElement defined in XAML
+        //    if (file != null)
+        //    {
+        //        mediaPlayer.Source = MediaSource.CreateFromStorageFile(file);
+
+        //        mediaPlayer.MediaPlayer.Play();
+        //    }
+        //}
     }
 }
