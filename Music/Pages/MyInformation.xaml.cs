@@ -45,21 +45,21 @@ namespace Music.Pages
                 Debug.WriteLine(member);
 
                 this.PersonPicture.ProfilePicture = new BitmapImage(new Uri(member.avatar));
-                this.Name.Text = "Name: " + member.lastName + " " + member.firstName;
+                this.Name.Text = member.lastName + " " + member.firstName;
                 if (member.gender == 1)
                 {
-                    this.Gender.Text = "Gender: Male";
+                    this.Gender.Text = "Male";
                 }
                 else
                 {
-                    this.Gender.Text = "Gender: Female";
+                    this.Gender.Text = "Female";
                 }
 
-                this.email.Text = "Email: " + member.email;
-                this.Address.Text = "Address: " + member.address;
-                this.Birthday.Text = "Birthday: " + member.birthday;
-                this.Phone.Text = "Phone: " + member.phone;
-                this.introduction.Text = "Introdution: " + member.introduction;
+                this.email.Text =  member.email;
+                this.Address.Text = member.address;
+                this.Birthday.Text =  member.birthday;
+                this.Phone.Text = member.phone;
+                this.introduction.Text =  member.introduction;
                 this.loginRequied.Visibility = Visibility.Collapsed;
             }
         }

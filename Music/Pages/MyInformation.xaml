@@ -10,15 +10,17 @@
 
     <Grid>
         <ScrollViewer HorizontalAlignment="Center">
-                <StackPanel x:Name="info" Visibility="Visible">
+            <StackPanel x:Name="info" Visibility="Visible">
                 <PersonPicture x:Name="PersonPicture" Margin="0 50 0 30"/>
-                <TextBlock x:Name="Name"></TextBlock>
-                <TextBlock x:Name="Gender"></TextBlock>
-                <TextBlock x:Name="Birthday"></TextBlock>
-                <TextBlock x:Name="email"></TextBlock>
-                <TextBlock x:Name="Phone"></TextBlock>
-                <TextBlock x:Name="Address"></TextBlock>
-                <TextBlock x:Name="introduction"></TextBlock>
+                <ListBox Width="500">
+                    <TextBlock><Bold>Name: </Bold><Span><Run x:Name="Name"></Run></Span></TextBlock>
+                    <TextBlock><Bold>Gender: </Bold><Span></Span><Run x:Name="Gender"></Run></TextBlock>
+                    <TextBlock><Bold>Birthday: </Bold><Span><Run x:Name="Birthday"></Run></Span></TextBlock>
+                    <TextBlock><Bold>Email: </Bold><Span><Run x:Name="email"></Run></Span></TextBlock>
+                    <TextBlock><Bold>Phone: </Bold><Span><Run x:Name="Phone"></Run></Span></TextBlock>
+                    <TextBlock><Bold>Address: </Bold><Span><Run x:Name="Address"></Run></Span></TextBlock>
+                    <TextBlock><Bold>Introduction: </Bold><Span><Run x:Name="introduction"></Run></Span></TextBlock>
+                </ListBox>
                 <Button Style="{StaticResource AccentButtonStyle}" Content="Logout" HorizontalAlignment="Center" Margin="50" Click="ButtonLogout_OnClick"/>
             </StackPanel>
         </ScrollViewer>
