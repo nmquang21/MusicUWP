@@ -46,7 +46,8 @@ namespace Music.Pages
             MainFrame = this.ContentFrame;
             NamePlaying = this.ControlLabel;
             btnStatus = this.StatusButton;
-            
+            MySongs = new List<Song>();
+            NewSongs = new List<Song>();
             //MyMediaPlayer.Source = MediaSource.CreateFromUri(new Uri("https://c1-ex-swe.nixcdn.com/NhacCuaTui982/BanDuyenRemix-DinhDungHtrolPhamThanh-5962025.mp3"));
             //https://data25.chiasenhac.com/downloads/2036/3/2035613-5a4faa89/128/Co%20Tham%20Khong%20Ve%20-%20Phat%20Ho_%20Jokes%20Bii_%20T.mp3
             //if (!GetTokenFromLocalStorage().Equals(""))
@@ -308,13 +309,13 @@ namespace Music.Pages
 
         public void PlayOtherSong()
         {
-            if (listPlaying == 0)
+            if (listPlaying == 0 && MySongs.Count>0)
             {
                 MyMediaPlayer.Source = new Uri(MySongs[_currentIndex].link);
                 MySong.MyList.SelectedIndex = _currentIndex;
                 this.ControlLabel.Text = MySongs[_currentIndex].name;
             }
-            else if (listPlaying == 1)
+            else if (listPlaying == 1 && NewSongs.Count>0)
             {
                 MyMediaPlayer.Source = new Uri(NewSongs[_currentIndex].link);
                 ListSong.NewList.SelectedIndex = _currentIndex;
@@ -324,16 +325,19 @@ namespace Music.Pages
         }
         public void PlaySong()
         {
-            MyMediaPlayer.Play();
-            _isPlay = true;
-            this.StatusButton.Icon = new SymbolIcon(Symbol.Pause);
-            if (listPlaying == 0)
+            if (_currentIndex != -1)
             {
-                this.ControlLabel.Text = MySongs[_currentIndex].name;
-            }
-            else
-            {
-                this.ControlLabel.Text = NewSongs[_currentIndex].name;
+                MyMediaPlayer.Play();
+                _isPlay = true;
+                this.StatusButton.Icon = new SymbolIcon(Symbol.Pause);
+                if (listPlaying == 0 && MySongs.Count >0)
+                {
+                    this.ControlLabel.Text = MySongs[_currentIndex].name;
+                }
+                else if(listPlaying == 1 && NewSongs.Count>0)
+                {
+                    this.ControlLabel.Text = NewSongs[_currentIndex].name;
+                }
             }
         }
 
