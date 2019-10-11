@@ -31,7 +31,12 @@
                 <NavigationViewItem Tag="mysong" Icon="Audio" Content="My Songs"/>
                 <NavigationViewItem Tag="listsong" Content="New Songs">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE762;"/>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE90B;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem Tag="freesong" Content="Free Songs">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE762;"/> 
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem Tag="upload" Content="Upload Song">

@@ -30,12 +30,14 @@ namespace Music.Pages
     {
         public static List<Song> MySongs;
         public static List<Song> NewSongs;
+        public static List<Song> FreeSongs;
         public static MediaElement MyMediaPlayer;
         public static Frame MainFrame;
         public static bool _isPlay = true;
         public static int _currentIndex = -1;
-        public static int listPlaying = 0;  //0: My Songs
-                                            //1: New Songs
+        public static string listPlaying = "";  //MY_SONG: My Songs
+                                                //NEW_SONG: New Songs
+                                                //FREE_SONG: Free Songs
         public static TextBlock NamePlaying;
         public static AppBarButton btnStatus;
         public Naview()
@@ -48,18 +50,7 @@ namespace Music.Pages
             btnStatus = this.StatusButton;
             MySongs = new List<Song>();
             NewSongs = new List<Song>();
-            //MyMediaPlayer.Source = MediaSource.CreateFromUri(new Uri("https://c1-ex-swe.nixcdn.com/NhacCuaTui982/BanDuyenRemix-DinhDungHtrolPhamThanh-5962025.mp3"));
-            //https://data25.chiasenhac.com/downloads/2036/3/2035613-5a4faa89/128/Co%20Tham%20Khong%20Ve%20-%20Phat%20Ho_%20Jokes%20Bii_%20T.mp3
-            //if (!GetTokenFromLocalStorage().Equals(""))
-            //{
-            //    this.Login.Visibility = Visibility.Collapsed;
-            //    this.Register.Visibility = Visibility.Collapsed;
-            //}
-            //else
-            //{
-            //    this.Login.Visibility = Visibility.Visible;
-            //    this.Register.Visibility = Visibility.Visible;
-            //}
+            FreeSongs = new List<Song>();
         }
         // Add "using" for WinUI controls.
         // using muxc = Microsoft.UI.Xaml.Controls;
@@ -73,7 +64,7 @@ namespace Music.Pages
         private readonly List<(string Tag, Type Page)> _pages = new List<(string Tag, Type Page)>
         {
             ("home", typeof(Home)),
-            ("apps", typeof(MainPage)),
+            ("freesong", typeof(FreeSong)),
             ("upload", typeof(Upload)),
             ("listsong", typeof(ListSong)),
             ("register", typeof(Register)),
@@ -260,68 +251,60 @@ namespace Music.Pages
 
         private void NextButton_OnClick(object sender, RoutedEventArgs e)
         {
-            _currentIndex++;
-            if (listPlaying == 0)
+            
+            if (listPlaying.Equals("MY_SONG"))
             {
-                if (_currentIndex >= MySongs.Count || _currentIndex < 0)
-                {
-                    _currentIndex = 0;
-                }
+               NextSong(MySongs);
             }
-            else if (listPlaying == 1)
+            else if (listPlaying.Equals("NEW_SONG"))
             {
-                if (_currentIndex >= NewSongs.Count || _currentIndex < 0)
-                {
-                    _currentIndex = 0;
-                }
+                NextSong(NewSongs);
+            }
+            else if (listPlaying.Equals("FREE_SONG"))
+            {
+                NextSong(FreeSongs);
             }
             PlayOtherSong();
 
         }
         private void PreviousButton_OnClick(object sender, RoutedEventArgs e)
         {
-            _currentIndex--;
-            if (listPlaying == 0)
+            
+            if (listPlaying.Equals("MY_SONG"))
             {
-                if (_currentIndex < 0)
-                {
-                    _currentIndex = MySongs.Count - 1;
-                }
-                else if (_currentIndex >= MySongs.Count)
-                {
-                    _currentIndex = 0;
-                }
+                PreviousSong(MySongs);
             }
-            else if (listPlaying == 1)
+            else if (listPlaying.Equals("NEW_SONG"))
             {
-                if (_currentIndex < 0)
-                {
-                    _currentIndex = NewSongs.Count - 1;
-                }
-                else if (_currentIndex >= NewSongs.Count)
-                {
-                    _currentIndex = 0;
-                }
+                PreviousSong(NewSongs);
             }
-
+            else if (listPlaying.Equals("FREE_SONG"))
+            {
+                PreviousSong(FreeSongs);
+            }
             PlayOtherSong();
         }
 
         public void PlayOtherSong()
         {
-            if (listPlaying == 0 && MySongs.Count>0)
+            if (listPlaying.Equals("MY_SONG") && MySongs.Count>0)
             {
                 MyMediaPlayer.Source = new Uri(MySongs[_currentIndex].link);
                 MySong.MyList.SelectedIndex = _currentIndex;
                 this.ControlLabel.Text = MySongs[_currentIndex].name;
             }
-            else if (listPlaying == 1 && NewSongs.Count>0)
+            else if (listPlaying.Equals("NEW_SONG") && NewSongs.Count>0)
             {
                 MyMediaPlayer.Source = new Uri(NewSongs[_currentIndex].link);
                 ListSong.NewList.SelectedIndex = _currentIndex;
                 this.ControlLabel.Text = NewSongs[_currentIndex].name;
             }
-             
+            else if (listPlaying.Equals("FREE_SONG") && FreeSongs.Count > 0)
+            {
+                MyMediaPlayer.Source = new Uri(FreeSongs[_currentIndex].link);
+                FreeSong.FreeList.SelectedIndex = _currentIndex;
+                this.ControlLabel.Text = FreeSongs[_currentIndex].name;
+            }
         }
         public void PlaySong()
         {
@@ -330,13 +313,17 @@ namespace Music.Pages
                 MyMediaPlayer.Play();
                 _isPlay = true;
                 this.StatusButton.Icon = new SymbolIcon(Symbol.Pause);
-                if (listPlaying == 0 && MySongs.Count >0)
+                if (listPlaying.Equals("MY_SONG") && MySongs.Count >0)
                 {
                     this.ControlLabel.Text = MySongs[_currentIndex].name;
                 }
-                else if(listPlaying == 1 && NewSongs.Count>0)
+                else if(listPlaying.Equals("NEW_SONG") && NewSongs.Count>0)
                 {
                     this.ControlLabel.Text = NewSongs[_currentIndex].name;
+                }
+                else if (listPlaying.Equals("FREE_SONG") && FreeSongs.Count > 0)
+                {
+                    this.ControlLabel.Text = FreeSongs[_currentIndex].name;
                 }
             }
         }
@@ -347,6 +334,28 @@ namespace Music.Pages
             _isPlay = false;
             this.StatusButton.Icon = new SymbolIcon(Symbol.Play);
             this.ControlLabel.Text = "Paused!";
+        }
+
+        public void NextSong(List<Song> list)
+        {
+            _currentIndex++;
+            if (_currentIndex >= list.Count || _currentIndex < 0)
+            {
+                _currentIndex = 0;
+            }
+        }
+
+        public void PreviousSong(List<Song> list)
+        {
+            _currentIndex--;
+            if (_currentIndex < 0)
+            {
+                _currentIndex = list.Count - 1;
+            }
+            else if (_currentIndex >= list.Count)
+            {
+                _currentIndex = 0;
+            }
         }
     }
 }

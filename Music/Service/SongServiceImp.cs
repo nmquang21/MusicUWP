@@ -26,6 +26,18 @@ namespace Music.Service
             return JsonConvert.DeserializeObject<Song>(responseContent);
         }
 
+        public Song UploadFreeSong(Song song)
+        {
+            var httpClient = new HttpClient();
+            //httpClient.DefaultRequestHeaders.Add("Authorization", "Basic " + token);
+            HttpContent content = new StringContent(JsonConvert.SerializeObject(song), Encoding.UTF8,
+                "application/json");
+            Task<HttpResponseMessage> httpRequestMessage = httpClient.PostAsync(ApiUrl.UPLOAD_FREE_SONG_URL, content);
+            String responseContent = httpRequestMessage.Result.Content.ReadAsStringAsync().Result;
+            Debug.WriteLine("Response: " + responseContent);
+            return JsonConvert.DeserializeObject<Song>(responseContent);
+        }
+
         public List<Song> GetNewSongs()
         {
             string token = GetTokenFromLocalStorage();
@@ -64,6 +76,24 @@ namespace Music.Service
             }
             
         }
+
+        public List<Song> GetFreeSongs()
+        {
+            var httpClient = new HttpClient();
+            Task<HttpResponseMessage> httpRequestMessage = httpClient.GetAsync(ApiUrl.GET_FREE_SONG_URL);
+            String responseContent = httpRequestMessage.Result.Content.ReadAsStringAsync().Result;
+            Debug.WriteLine("Response: " + responseContent);
+            try
+            {
+                return JsonConvert.DeserializeObject<List<Song>>(responseContent);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+        }
+
         private string GetTokenFromLocalStorage()
         {
             Windows.Storage.StorageFolder storageFolder =

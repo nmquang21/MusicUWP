@@ -24,7 +24,8 @@
                 <Button Style="{StaticResource AccentButtonStyle}" Content="Logout" HorizontalAlignment="Center" Margin="50" Click="ButtonLogout_OnClick"/>
             </StackPanel>
         </ScrollViewer>
-        <StackPanel x:Name="loginRequied" Margin="0 50">
+        <StackPanel x:Name="loginRequied" Margin="0 50" HorizontalAlignment="Center">
+            <TextBlock Margin="0 0 0 30" Foreground="Brown">You are not logged in! Please Login or Register</TextBlock>
             <PersonPicture/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button Content="Login" Style="{StaticResource AccentButtonStyle}" Click="ButtonLogin_OnClick" Margin="0 20 20 20 " Width="80"/>

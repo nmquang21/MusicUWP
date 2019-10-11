@@ -16,5 +16,6 @@ namespace Music.Service
         Member GetInformation();
         void logout();
         String GetUploadAvatarUrl();
+        String GetTokenFromLocalStorage();
     }
 }

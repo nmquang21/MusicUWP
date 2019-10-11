@@ -20,8 +20,8 @@
                             </Ellipse.Fill>
                         </Ellipse>
                         <StackPanel Margin="10,10,0,0">
-                            <TextBlock Text="{x:Bind name}" Style="{ThemeResource BaseTextBlockStyle}"/>
-                            <TextBlock Text="{x:Bind singer}" Style="{ThemeResource BaseTextBlockStyle}"/>
+                            <TextBlock Text="{x:Bind name }" x:Name="name"  Style="{ThemeResource BaseTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseHighBrush}"/>
+                            <TextBlock Text="{x:Bind singer}" Style="{ThemeResource BodyTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                         </StackPanel>
                     </StackPanel>
                 </DataTemplate>
@@ -29,7 +29,8 @@
 
         </ListView>
         <StackPanel HorizontalAlignment="Center" x:Name="login">
-            <Button Content="Login" Style="{StaticResource AccentButtonStyle}" Click="ButtonLogin_OnClick" Margin="0 20 20 20 " Width="80"/>
+            <TextBlock Foreground="Brown" Margin="0 50 0 20">Please Login to view!</TextBlock>
+            <Button HorizontalAlignment="Center" Content="Login" Style="{StaticResource AccentButtonStyle}" Click="ButtonLogin_OnClick" Width="80"/>
         </StackPanel>
     </Grid>
 </Page>

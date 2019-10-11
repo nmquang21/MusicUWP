@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="Music.Pages.ListSong"
+    x:Class="Music.Pages.FreeSong"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Music.Pages"
@@ -10,7 +10,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <ListView ItemsSource="{x:Bind ListSongs}" x:Name="NewListSong" IsItemClickEnabled="True" ItemClick="NewSong_OnItemClick" >
+        <ListView ItemsSource="{x:Bind FreeSongs}" x:Name="FreeListSong" IsItemClickEnabled="True" ItemClick="FreeListSong_OnItemClick" >
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="entity:Song" >
                     <StackPanel Margin="0,10,0,10" Orientation="Horizontal"  Tag="{Binding}">
@@ -26,11 +26,6 @@
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
-
         </ListView>
-        <StackPanel HorizontalAlignment="Center" x:Name="login">
-            <TextBlock Foreground="Brown" Margin="0 50 0 20">Please Login to view!</TextBlock>
-            <Button HorizontalAlignment="Center" Content="Login" Style="{StaticResource AccentButtonStyle}" Click="ButtonLogin_OnClick" Width="80"/>
-        </StackPanel>
     </Grid>
 </Page>

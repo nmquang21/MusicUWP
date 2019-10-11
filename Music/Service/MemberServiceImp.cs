@@ -89,7 +89,7 @@ namespace Music.Service
             Windows.Storage.FileIO.WriteTextAsync(sampleFile, token).GetAwaiter().GetResult();
         }
 
-        private string GetTokenFromLocalStorage()
+        public string GetTokenFromLocalStorage()
         {
             Windows.Storage.StorageFolder storageFolder =
                 Windows.Storage.ApplicationData.Current.LocalFolder;

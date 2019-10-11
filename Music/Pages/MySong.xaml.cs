@@ -52,7 +52,7 @@ namespace Music.Pages
                     });
                 }
 
-                if (Naview.listPlaying == 0)
+                if (Naview.listPlaying.Equals("MY_SONG"))
                 {
                     MyListSong.SelectedIndex = Naview._currentIndex;
                 }
@@ -72,7 +72,7 @@ namespace Music.Pages
             Debug.WriteLine(song.name);
             Naview.MyMediaPlayer.Source = new Uri(song.link);
             Naview._isPlay = true;
-            Naview.listPlaying = 0;
+            Naview.listPlaying = "MY_SONG";
             Naview._currentIndex = ListSongs.IndexOf(song);
             Naview.NamePlaying.Text = song.name;
             Naview.btnStatus.Icon = new SymbolIcon(Symbol.Pause);

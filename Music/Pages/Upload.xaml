@@ -27,6 +27,7 @@
                 <TextBlock>Link</TextBlock>
                 <TextBox x:Name="link" Margin="0 0 0 25"></TextBox>
                 <TextBlock x:Name="link_validate" Margin="0 -25 0 25" Visibility="Collapsed" Foreground="Red"></TextBlock>
+                <TextBlock x:Name="upload_state" Margin="0 0 0 25" Visibility="Visible" Foreground="Red" HorizontalAlignment="Center"></TextBlock>
                 <Grid HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
