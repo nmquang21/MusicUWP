@@ -10,7 +10,12 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <ListView ItemsSource="{x:Bind FreeSongs}" x:Name="FreeListSong" IsItemClickEnabled="True" ItemClick="FreeListSong_OnItemClick" >
+        <Grid.Background>
+            <ImageBrush Stretch="UniformToFill" >
+                <ImageBrush.ImageSource>ms-appx:///Assets/background-3.jpg</ImageBrush.ImageSource>
+            </ImageBrush>
+        </Grid.Background>
+        <ListView ItemsSource="{x:Bind FreeSongs}" x:Name="FreeListSong" IsItemClickEnabled="True" ItemClick="FreeListSong_OnItemClick" Margin="30" >
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="entity:Song" >
                     <StackPanel Margin="0,10,0,10" Orientation="Horizontal"  Tag="{Binding}">
