@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\APTECH\\Sem3\\Music\\Music\\Music.csproj": {}
+    "C:\\Users\\nmqua\\Desktop\\demo\\Music\\Music.csproj": {}
   },
   "projects": {
-    "E:\\APTECH\\Sem3\\Music\\Music\\Music.csproj": {
+    "C:\\Users\\nmqua\\Desktop\\demo\\Music\\Music.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\APTECH\\Sem3\\Music\\Music\\Music.csproj",
+        "projectUniqueName": "C:\\Users\\nmqua\\Desktop\\demo\\Music\\Music.csproj",
         "projectName": "Music",
-        "projectPath": "E:\\APTECH\\Sem3\\Music\\Music\\Music.csproj",
+        "projectPath": "C:\\Users\\nmqua\\Desktop\\demo\\Music\\Music.csproj",
         "packagesPath": "C:\\Users\\nmqua\\.nuget\\packages\\",
-        "outputPath": "E:\\APTECH\\Sem3\\Music\\Music\\obj\\",
+        "outputPath": "C:\\Users\\nmqua\\Desktop\\demo\\Music\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
